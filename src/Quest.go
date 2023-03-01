@@ -6,13 +6,13 @@ import (
 )
 
 type Quest struct {
-	Name           string
-	NameNpcKill    string
-	NpcAmountNeed  int
-	UserAmountNeed int
-	GiveExp        int
-	GiveGold       int
-	GiveDiamonds   int
+	Name           string `json:"name"`
+	NameNpcKill    string `json:"nameNpcKill"`
+	NpcAmountNeed  int    `json:"npcAmountNeed"`
+	UserAmountNeed int    `json:"userAmountNeed"`
+	GiveExp        int    `json:"giveExp"`
+	GiveGold       int    `json:"giveGold"`
+	GiveDiamonds   int    `json:"giveDiamonds"`
 }
 
 func GetQuests() {

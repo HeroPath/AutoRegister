@@ -6,16 +6,16 @@ import (
 )
 
 type Item struct {
-	Name          string
-	Type          string
-	LvlMin        int
-	ClassRequired string
-	Price         int
-	Strength      int
-	Dexterity     int
-	Intelligence  int
-	Vitality      int
-	Luck          int
+	Name          string `json:"name"`
+	Type          string `json:"type"`
+	LvlMin        int    `json:"lvlMin"`
+	ClassRequired string `json:"classRequired"`
+	Price         int    `json:"price"`
+	Strength      int    `json:"strength"`
+	Dexterity     int    `json:"dexterity"`
+	Intelligence  int    `json:"intelligence"`
+	Vitality      int    `json:"vitality"`
+	Luck          int    `json:"luck"`
 }
 
 func GetItems() {

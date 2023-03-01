@@ -6,18 +6,18 @@ import (
 )
 
 type Npc struct {
-	Name        string
-	Level       int
-	GiveMaxExp  int
-	GiveMinExp  int
-	GiveMaxGold int
-	GiveMinGold int
-	Hp          int
-	MaxHp       int
-	MinDmg      int
-	MaxDmg      int
-	Defense     int
-	Zone        string
+	Name        string `json:"name"`
+	Level       int    `json:"level"`
+	GiveMaxExp  int    `json:"giveMaxExp"`
+	GiveMinExp  int    `json:"giveMinExp"`
+	GiveMaxGold int    `json:"giveMaxGold"`
+	GiveMinGold int    `json:"giveMinGold"`
+	Hp          int    `json:"hp"`
+	MaxHp       int    `json:"maxHp"`
+	MinDmg      int    `json:"minDmg"`
+	MaxDmg      int    `json:"maxDmg"`
+	Defense     int    `json:"defense"`
+	Zone        string `json:"zone"`
 }
 
 func GetNpcs() {
