@@ -49,7 +49,7 @@ func RegisterNpcs(url string, token string) {
 	npcs := GetNpcs()
 	for _, npc := range npcs {
 		_, status := PostRequest(
-			url+"npc",
+			url+"npcs",
 			npc,
 			token,
 		)

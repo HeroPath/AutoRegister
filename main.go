@@ -4,7 +4,6 @@ import (
 	"aoweb-auto-register/src"
 	"github.com/joho/godotenv"
 	"os"
-	"time"
 )
 
 func main() {
@@ -16,8 +15,8 @@ func main() {
 	usernameAdmin := os.Getenv("USERNAME_ADMIN")
 	passwordAdmin := os.Getenv("PASSWORD_ADMIN")
 
-	src.RegisterUsers(url)
-	time.Sleep(3 * time.Second)
+	//src.RegisterUsers(url)
+	//time.Sleep(3 * time.Second)
 
 	token := src.LoginAdminUser(url, usernameAdmin, passwordAdmin)
 

@@ -40,7 +40,7 @@ func RegisterQuests(url string, token string) {
 	quests := GetQuests()
 	for _, quest := range quests {
 		_, status := PostRequest(
-			url+"quest",
+			url+"quests",
 			quest,
 			token,
 		)

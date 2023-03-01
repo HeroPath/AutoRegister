@@ -46,7 +46,7 @@ func RegisterItems(url string, token string) {
 	items := GetItems()
 	for _, item := range items {
 		_, status := PostRequest(
-			url+"item",
+			url+"items",
 			item,
 			token,
 		)
