@@ -17,6 +17,8 @@ func main() {
 	usernameAdmin := os.Getenv("USERNAME_ADMIN")
 	passwordAdmin := os.Getenv("PASSWORD_ADMIN")
 
+	fmt.Println("Registering...")
+
 	src.RegisterUsers(url)
 	time.Sleep(3 * time.Second)
 
@@ -39,8 +41,5 @@ func main() {
 			result := <-results
 			fmt.Println(result)
 		}
-
-		fmt.Println("Register success")
 	}
-
 }
