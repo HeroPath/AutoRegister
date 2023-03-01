@@ -1,0 +1,1 @@
+# aoweb-auto-register
