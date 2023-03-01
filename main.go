@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	timeInitial := time.Now()
 	err := godotenv.Load()
 	if err != nil {
 		panic("Error loading .env file")
@@ -42,4 +43,7 @@ func main() {
 			fmt.Println(result)
 		}
 	}
+	timeFinal := time.Now()
+	fmt.Println("Time: ", timeFinal.Sub(timeInitial))
+	fmt.Scanf("%s")
 }
