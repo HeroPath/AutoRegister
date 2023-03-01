@@ -1,6 +1,7 @@
 package src
 
 import (
+	"fmt"
 	"strconv"
 )
 
@@ -35,9 +36,21 @@ func GetUserRegister() []UserRegister {
 
 func RegisterUsers(url string) {
 	users := GetUserRegister()
+	results := make(chan error, len(users))
+
 	for _, user := range users {
-		PostRequest(url+"auth/register", user, "")
+		go func(u UserRegister) {
+			PostRequest(url+"auth/register", u, "")
+			results <- nil
+		}(user)
 	}
+
+	for i := 0; i < len(users); i++ {
+		if err := <-results; err != nil {
+			fmt.Printf("Error in the request: %v \n", err)
+		}
+	}
+	close(results)
 }
 
 func LoginAdminUser(url string, username string, password string) interface{} {
