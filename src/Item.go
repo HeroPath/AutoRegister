@@ -1,7 +1,6 @@
 package src
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -16,10 +15,10 @@ type Item struct {
 	Intelligence  int    `json:"intelligence"`
 	Vitality      int    `json:"vitality"`
 	Luck          int    `json:"luck"`
+	Shop          int    `json:"shop"`
 }
 
 func GetItems() []Item {
-
 	items := make([]Item, 0)
 	sheet := readFile("Items")
 
@@ -36,6 +35,7 @@ func GetItems() []Item {
 			item.Intelligence, _ = strconv.Atoi(row.Cells[8].String())
 			item.Vitality, _ = strconv.Atoi(row.Cells[9].String())
 			item.Luck, _ = strconv.Atoi(row.Cells[10].String())
+			item.Shop, _ = strconv.Atoi(row.Cells[11].String())
 			items = append(items, item)
 		}
 	}
@@ -45,11 +45,6 @@ func GetItems() []Item {
 func RegisterItems(url string, token string) {
 	items := GetItems()
 	for _, item := range items {
-		_, status := PostRequest(
-			url+"items",
-			item,
-			token,
-		)
-		fmt.Println(status)
+		PostRequest(url+"items", item, token)
 	}
 }

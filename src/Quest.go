@@ -1,7 +1,6 @@
 package src
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -39,11 +38,6 @@ func GetQuests() []Quest {
 func RegisterQuests(url string, token string) {
 	quests := GetQuests()
 	for _, quest := range quests {
-		_, status := PostRequest(
-			url+"quests",
-			quest,
-			token,
-		)
-		fmt.Println(status)
+		PostRequest(url+"quests", quest, token)
 	}
 }

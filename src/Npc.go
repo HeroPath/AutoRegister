@@ -1,7 +1,6 @@
 package src
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -48,11 +47,6 @@ func GetNpcs() []Npc {
 func RegisterNpcs(url string, token string) {
 	npcs := GetNpcs()
 	for _, npc := range npcs {
-		_, status := PostRequest(
-			url+"npcs",
-			npc,
-			token,
-		)
-		fmt.Println(status)
+		PostRequest(url+"npcs", npc, token)
 	}
 }

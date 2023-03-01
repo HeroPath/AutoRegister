@@ -1,7 +1,6 @@
 package src
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -37,12 +36,7 @@ func GetUserRegister() []UserRegister {
 func RegisterUsers(url string) {
 	users := GetUserRegister()
 	for _, user := range users {
-		_, status := PostRequest(
-			url+"auth/register",
-			user,
-			"",
-		)
-		fmt.Println(status)
+		PostRequest(url+"auth/register", user, "")
 	}
 }
 
@@ -50,11 +44,7 @@ func LoginAdminUser(url string, username string, password string) interface{} {
 	user := UserLogin{}
 	user.Username = username
 	user.Password = password
-	response, statusCode := PostRequest(
-		url+"auth/login",
-		user,
-		"",
-	)
+	response, statusCode := PostRequest(url+"auth/login", user, "")
 	if statusCode == 200 {
 		return response.(map[string]interface{})["token"]
 	}
