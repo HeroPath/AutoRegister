@@ -17,7 +17,7 @@ type UserLogin struct {
 	Password string `json:"password"`
 }
 
-func GetUserRegister() {
+func GetUserRegister() []UserRegister {
 	users := make([]UserRegister, 0)
 	sheet := readFile("Users")
 
@@ -31,6 +31,17 @@ func GetUserRegister() {
 			users = append(users, user)
 		}
 	}
+	return users
+}
 
-	fmt.Println(users)
+func RegisterUsers(url string) {
+	users := GetUserRegister()
+	for _, user := range users {
+		status := PostRequest(
+			url+"auth/register",
+			user,
+			"",
+		)
+		fmt.Println(status)
+	}
 }

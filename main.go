@@ -2,13 +2,13 @@ package main
 
 import (
 	"aoweb-auto-register/src"
-	"fmt"
 )
 
-func main() {
+const url = "http://localhost:8000/api/v1/"
 
-	fmt.Println("Users")
-	src.GetUserRegister()
+func main() {
+	src.RegisterUsers(url)
+
 	/*
 		fmt.Println("Quests")
 		src.GetQuests()
