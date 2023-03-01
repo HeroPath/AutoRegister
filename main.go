@@ -7,12 +7,17 @@ import (
 
 func main() {
 
-	fmt.Println("Quests")
-	src.GetQuests()
+	fmt.Println("Users")
+	src.GetUserRegister()
+	/*
+		fmt.Println("Quests")
+		src.GetQuests()
 
-	fmt.Println("Items")
-	src.GetItems()
+		fmt.Println("Items")
+		src.GetItems()
 
-	fmt.Println("Npcs")
-	src.GetNpcs()
+		fmt.Println("Npcs")
+		src.GetNpcs()
+
+	*/
 }
