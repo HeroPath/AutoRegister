@@ -42,9 +42,10 @@ func GetItems() []Item {
 	return items
 }
 
-func RegisterItems(url string, token string) {
+func RegisterItems(url string, token string) string {
 	items := GetItems()
 	for _, item := range items {
 		PostRequest(url+"items", item, token)
 	}
+	return ""
 }

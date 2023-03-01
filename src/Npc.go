@@ -44,9 +44,10 @@ func GetNpcs() []Npc {
 	return npcs
 }
 
-func RegisterNpcs(url string, token string) {
+func RegisterNpcs(url string, token string) string {
 	npcs := GetNpcs()
 	for _, npc := range npcs {
 		PostRequest(url+"npcs", npc, token)
 	}
+	return ""
 }

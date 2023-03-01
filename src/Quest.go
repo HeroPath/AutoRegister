@@ -35,9 +35,10 @@ func GetQuests() []Quest {
 	return quests
 }
 
-func RegisterQuests(url string, token string) {
+func RegisterQuests(url string, token string) string {
 	quests := GetQuests()
 	for _, quest := range quests {
 		PostRequest(url+"quests", quest, token)
 	}
+	return ""
 }

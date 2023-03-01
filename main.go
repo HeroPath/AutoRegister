@@ -2,6 +2,7 @@ package main
 
 import (
 	"aoweb-auto-register/src"
+	"fmt"
 	"github.com/joho/godotenv"
 	"os"
 	"time"
@@ -22,8 +23,24 @@ func main() {
 	token := src.LoginAdminUser(url, usernameAdmin, passwordAdmin)
 
 	if token != nil {
-		src.RegisterItems(url, token.(string))
-		src.RegisterNpcs(url, token.(string))
-		src.RegisterQuests(url, token.(string))
+		results := make(chan string, 3)
+
+		go func() {
+			results <- src.RegisterItems(url, token.(string))
+		}()
+		go func() {
+			results <- src.RegisterNpcs(url, token.(string))
+		}()
+		go func() {
+			results <- src.RegisterQuests(url, token.(string))
+		}()
+
+		for i := 0; i < 3; i++ {
+			result := <-results
+			fmt.Println(result)
+		}
+
+		fmt.Println("Register success")
 	}
+
 }
