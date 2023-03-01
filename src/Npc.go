@@ -20,7 +20,7 @@ type Npc struct {
 	Zone        string `json:"zone"`
 }
 
-func GetNpcs() {
+func GetNpcs() []Npc {
 	npcs := make([]Npc, 0)
 	sheet := readFile("Npcs")
 
@@ -42,5 +42,17 @@ func GetNpcs() {
 			npcs = append(npcs, npc)
 		}
 	}
-	fmt.Println(npcs)
+	return npcs
+}
+
+func RegisterNpcs(url string, token string) {
+	npcs := GetNpcs()
+	for _, npc := range npcs {
+		_, status := PostRequest(
+			url+"npc",
+			npc,
+			token,
+		)
+		fmt.Println(status)
+	}
 }

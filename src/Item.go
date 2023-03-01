@@ -18,7 +18,7 @@ type Item struct {
 	Luck          int    `json:"luck"`
 }
 
-func GetItems() {
+func GetItems() []Item {
 
 	items := make([]Item, 0)
 	sheet := readFile("Items")
@@ -39,5 +39,17 @@ func GetItems() {
 			items = append(items, item)
 		}
 	}
-	fmt.Println(items)
+	return items
+}
+
+func RegisterItems(url string, token string) {
+	items := GetItems()
+	for _, item := range items {
+		_, status := PostRequest(
+			url+"item",
+			item,
+			token,
+		)
+		fmt.Println(status)
+	}
 }

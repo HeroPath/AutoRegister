@@ -15,7 +15,7 @@ type Quest struct {
 	GiveDiamonds   int    `json:"giveDiamonds"`
 }
 
-func GetQuests() {
+func GetQuests() []Quest {
 
 	quests := make([]Quest, 0)
 	sheet := readFile("Quests")
@@ -33,5 +33,17 @@ func GetQuests() {
 			quests = append(quests, quest)
 		}
 	}
-	fmt.Println(quests)
+	return quests
+}
+
+func RegisterQuests(url string, token string) {
+	quests := GetQuests()
+	for _, quest := range quests {
+		_, status := PostRequest(
+			url+"quest",
+			quest,
+			token,
+		)
+		fmt.Println(status)
+	}
 }
