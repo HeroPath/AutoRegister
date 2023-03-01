@@ -36,8 +36,7 @@ func main() {
 			results <- src.RegisterQuests(url, token.(string))
 		}()
 		for i := 0; i < 3; i++ {
-			result := <-results
-			fmt.Println(result)
+			<-results
 		}
 	}
 }
