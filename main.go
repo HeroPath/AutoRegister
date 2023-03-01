@@ -2,11 +2,17 @@ package main
 
 import (
 	"aoweb-auto-register/src"
+	"github.com/joho/godotenv"
+	"os"
 )
 
-const url = "http://localhost:8000/api/v1/"
-
 func main() {
+	// user dotenv
+	err := godotenv.Load()
+	if err != nil {
+		panic("Error loading .env file")
+	}
+	url := os.Getenv("URL_API")
 	src.RegisterUsers(url)
 
 	/*
