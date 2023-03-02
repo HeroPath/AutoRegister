@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-	timeInitial := time.Now()
 	err := godotenv.Load()
 	if err != nil {
 		panic("Error loading .env file")
@@ -27,7 +26,6 @@ func main() {
 
 	if token != nil {
 		results := make(chan string, 3)
-
 		go func() {
 			results <- src.RegisterItems(url, token.(string))
 		}()
@@ -37,13 +35,8 @@ func main() {
 		go func() {
 			results <- src.RegisterQuests(url, token.(string))
 		}()
-
 		for i := 0; i < 3; i++ {
-			result := <-results
-			fmt.Println(result)
+			<-results
 		}
 	}
-	timeFinal := time.Now()
-	fmt.Println("Time: ", timeFinal.Sub(timeInitial))
-	fmt.Scanf("%s")
 }
