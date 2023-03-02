@@ -1,7 +1,7 @@
 package main
 
 import (
-	"aoweb-auto-register/src"
+	"AutoRegister/src"
 	"fmt"
 	"github.com/joho/godotenv"
 	"os"
