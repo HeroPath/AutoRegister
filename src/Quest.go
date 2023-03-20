@@ -7,6 +7,7 @@ import (
 type Quest struct {
 	Name           string `json:"name"`
 	Description    string `json:"description"`
+	LevelRequired  int    `json:"levelRequired"`
 	NameNpcKill    string `json:"nameNpcKill"`
 	NpcAmountNeed  int    `json:"npcAmountNeed"`
 	UserAmountNeed int    `json:"userAmountNeed"`
@@ -24,12 +25,13 @@ func GetQuests() []Quest {
 			quest := Quest{}
 			quest.Name = row.Cells[1].String()
 			quest.Description = row.Cells[2].String()
-			quest.NameNpcKill = row.Cells[3].String()
-			quest.NpcAmountNeed, _ = strconv.Atoi(row.Cells[4].String())
-			quest.UserAmountNeed, _ = strconv.Atoi(row.Cells[5].String())
-			quest.GiveExp, _ = strconv.Atoi(row.Cells[6].String())
-			quest.GiveGold, _ = strconv.Atoi(row.Cells[7].String())
-			quest.GiveDiamonds, _ = strconv.Atoi(row.Cells[8].String())
+			quest.LevelRequired, _ = strconv.Atoi(row.Cells[3].String())
+			quest.NameNpcKill = row.Cells[4].String()
+			quest.NpcAmountNeed, _ = strconv.Atoi(row.Cells[5].String())
+			quest.UserAmountNeed, _ = strconv.Atoi(row.Cells[6].String())
+			quest.GiveExp, _ = strconv.Atoi(row.Cells[7].String())
+			quest.GiveGold, _ = strconv.Atoi(row.Cells[8].String())
+			quest.GiveDiamonds, _ = strconv.Atoi(row.Cells[9].String())
 			quests = append(quests, quest)
 		}
 	}
