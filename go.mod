@@ -1,4 +1,4 @@
-module aoweb-auto-register
+module AutoRegister
 
 go 1.19
 
