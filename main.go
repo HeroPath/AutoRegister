@@ -20,7 +20,7 @@ func main() {
 	fmt.Println("Registering...")
 
 	src.RegisterUsers(url)
-	time.Sleep(2 * time.Second)
+	time.Sleep(500 * time.Millisecond)
 
 	token := src.LoginAdminUser(url, usernameAdmin, passwordAdmin)
 
